@@ -47,7 +47,7 @@ The user can enter a query into the input, e.g. 1 EUR to USD, and the app will d
 6. Delete previous converted amounts
 
 ### Screenshots
-_Note: the screenshots use AUD as a base currency but EUR can be used instead for this challenge._
+_Note: the screenshots use AUD as a base currency but this is only for illustration purposes. The recommended exchange rates API limits the base currency to EUR only._
 
 <img src="assets/screen-01.png" alt="screenshot" style="max-width: 700px"/>
 <img src="assets/screen-02.png" alt="screenshot" style="max-width: 700px"/>
