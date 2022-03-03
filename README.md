@@ -27,17 +27,17 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 ## Challenge Instructions
 
-You have been tasked with building a simple currency converter app as per the below screenshots.
+You have been tasked with building a simple currency converter app as per the below Requested Features section.
 
 The user can enter a query into the input, e.g. 1 EUR to USD, and the app will display the converted amount.
 
 ### Notes
-- The foundations of the app and exchange rate API integration are provided for you. You can reuse what is already there or create your own functionality.
+- The foundations of the app and a recommended exchange rate API integration are provided for you. You can reuse what is already there or create your own functionality.
 - You are also free to use third party packages as needed.
 - The UI need not be pixel perfect. Near enough is good enough.
 - It may be challenging to complete all the features within the allocated timeframe. We are more interested in the  implementation quality of the features you can complete rather than seeing them all complete.
 
-### Requested Features
+## Requested Features
 
 1. Display the converted amount based on the exchange rate from the API
 2. Display errors related to user input or from the exchange rate API
