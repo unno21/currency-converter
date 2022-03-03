@@ -1,4 +1,4 @@
-# ps-currency-converter-js
+# ps-currency-converter-ts
 
 ## Getting Started
 
