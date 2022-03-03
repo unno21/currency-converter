@@ -1,6 +1,13 @@
-# Getting Started with Create React App
+# ps-currency-converter-js
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Getting Started
+
+1. Clone the repo and run `npm install`
+2. Start the app via `npm start`
+3. Sign up for a free API key at https://exchangeratesapi.io and set it to the `API_KEY` variable
+
+_Note: If you run out of API requests during development you can create another account using a different email._
+
 
 ## Available Scripts
 
@@ -12,35 +19,37 @@ Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Challenge Instructions
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+You have been tasked with building a simple currency converter app as per the below screenshots.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The user can enter a query into the input, e.g. 1 EUR to USD, and the app will display the converted amount.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Notes
+- The foundations of the app and exchange rate API integration are provided for you. You can reuse what is already there or create your own functionality.
+- You are also free to use third party packages as needed.
+- The UI need not be pixel perfect. Near enough is good enough.
+- It may be challenging to complete all the features within the allocated timeframe. We are more interested in the  implementation quality of the features you can complete rather than seeing them all complete.
 
-### `npm run eject`
+### Requested Features
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+1. Display the converted amount based on the exchange rate from the API
+2. Display errors related to user input or from the exchange rate API
+3. Support case insensitive user input
+4. Allow the displayed converted amount to be swapped, e.g EUR-to-USD can be swapped to USD-to-EUR via the up-down arrows button
+5. Display a history of previous converted amounts
+6. Delete previous converted amounts
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Screenshots
+_Note: the screenshots use AUD as a base currency but EUR can be used instead for this challenge._
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+<img src="assets/screen-01.png" alt="screenshot" style="max-width: 700px"/>
+<img src="assets/screen-02.png" alt="screenshot" style="max-width: 700px"/>
+<img src="assets/screen-03.png" alt="screenshot" style="max-width: 700px"/>
+<img src="assets/screen-04.png" alt="screenshot" style="max-width: 700px"/>
