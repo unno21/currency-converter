@@ -6,6 +6,8 @@
 2. Start the app via `npm start`
 3. Sign up for a free API key at https://exchangeratesapi.io and set it to the `API_KEY` variable
 
+_Note: Be careful not to expose your API key in publicly visible git repositories._
+
 _Note: If you run out of API requests during development you can create another account using a different email._
 
 ## Available Scripts
