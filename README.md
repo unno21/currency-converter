@@ -6,9 +6,9 @@
 2. Start the app via `npm start`
 3. Sign up for a free API key at https://exchangeratesapi.io and set it to the `API_KEY` variable
 
-_Note: Be careful not to expose your API key in publicly visible git repositories._
+_⚠️ Be careful not to expose your API key in publicly visible git repositories._
 
-_Note: If you run out of API requests during development you can create another account using a different email._
+_⚠️ If you run out of API requests during development you can create another account using a different email._
 
 ## Available Scripts
 
@@ -58,11 +58,11 @@ It may be challenging to complete all the features within the allocated timefram
 1. Fork or clone this repo into your public accessible git profile
 2. Raise a Pull Request (PR) with your solution. Please ensure the PR is raised on your repository and not this repository.
 
-We encourage you to use git appropriately. For example, we would prefer to see a sensible git commit history instead of one large commit with all of the code changes.
+_⚠️ We encourage you to use git appropriately. For example, we would prefer to see a sensible git commit history instead of one large commit with all of the code changes._
 
 ## Screenshots
 
-_Note: the screenshots use AUD as a base currency but this is only for illustration purposes. The recommended exchange rates API limits the base currency to EUR only._
+_⚠️ The screenshots use AUD as a base currency but this is only for illustration purposes. The recommended exchange rates API limits the base currency to EUR only._
 
 <img src="assets/screen-01.png" alt="screenshot" style="max-width: 700px"/>
 <img src="assets/screen-02.png" alt="screenshot" style="max-width: 700px"/>
