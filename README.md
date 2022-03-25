@@ -55,7 +55,7 @@ It may be challenging to complete all the features within the allocated timefram
 
 ## 📥 How to submit the challenge
 
-1. Fork or clone this repo into your public accessible git profile
+1. Fork or clone this repo into your publicly accessible git profile
 2. Raise a Pull Request (PR) with your solution. Please ensure the PR is raised on your repository and not this repository.
 
 _⚠️ We encourage you to use git appropriately. For example, we would prefer to see a sensible git commit history instead of one large commit with all of the code changes._
