@@ -38,12 +38,12 @@ It may be challenging to complete all the features within the allocated timefram
 
 ### 🌟 Requested Features
 
-1. Display the converted amount based on the exchange rate from the API
-2. Display errors related to user input or from the exchange rate API
-3. Support case insensitive user input
-4. Allow the displayed converted amount to be swapped, e.g EUR-to-USD can be swapped to USD-to-EUR via the up-down arrows button
-5. Display a history of previous converted amounts with no fixed limit on the number of items
-6. Delete previous converted amounts
+1. Display the converted amount based on the exchange rate from the API.
+2. Display errors related to user input or from the exchange rate API.
+3. Support case insensitive user input.
+4. Allow the displayed converted amount to be swapped, e.g EUR-to-USD can be swapped to USD-to-EUR via the up-down arrows button.
+5. Display a history of previous converted amounts with no fixed limit on the number of items.
+6. Delete previous converted amounts.
 7. Add pagination for long lists of previous converted amounts.
 
 ### 🔧 Implementation Notes
@@ -55,10 +55,12 @@ It may be challenging to complete all the features within the allocated timefram
 
 ## 📥 How to submit the challenge
 
-1. Fork or clone this repo into your publicly accessible git profile
-2. Raise a Pull Request (PR) with your solution. Please ensure the PR is raised on your repository and not this repository.
+1. Fork or clone this repo into your publicly accessible git profile.
+2. Raise a Pull Request (PR) with your solution.
+    - We encourage you to use git appropriately.
+    - For example, we would prefer to see a sensible git commit history instead of one large commit with all of the code changes.
 
-_⚠️ We encourage you to use git appropriately. For example, we would prefer to see a sensible git commit history instead of one large commit with all of the code changes._
+_⚠️ Please ensure the PR is raised on your repository and not this repository._
 
 ## 🖼 Screenshots
 
