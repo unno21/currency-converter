@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { confirm } from "react-confirm-box";
 
 import { RootState } from '../../store';
+import { formatConversionData } from '../../utils/formatHistory';
 
 const HistoryHeaderContainer = styled.div`
   display: flex;
@@ -34,6 +35,7 @@ const ConversionHistory = () => {
 
   const dispatch = useDispatch();
   const histories = useSelector((state: RootState) => state.history.value);
+  const currencies = useSelector((state: RootState) => state.currency.value);
 
   const handleClearAllHistory = async () => {
     const result = await confirm("Are you sure you want to remove all history?");
@@ -49,15 +51,17 @@ const ConversionHistory = () => {
         <HistoryClear onClick={handleClearAllHistory}>CLEAR ALL</HistoryClear>
       </HistoryHeaderContainer>
       <HistoryCotainer>
-        {histories.map(history => (
-          <HistoryItem 
+        {histories.map(history => {
+          const { from, to, amount, convertedAmount } = formatConversionData(history, currencies);
+          return <HistoryItem 
             id={history.id}
             key={history.id}
-            fromLabel={`${history.value.amount} ${history.value.from} equals`} 
-            toLabel={`${history.value.convertedAmount} ${history.value.to}`}
+            fromLabel={`${amount} ${from} equals`} 
+            toLabel={`${convertedAmount} ${to}`}
             onRemove={(id: string) => { dispatch(removeFromHistory(id)) }}
             />
-        ))}
+          }
+        )}
       </HistoryCotainer>
     </>
   );

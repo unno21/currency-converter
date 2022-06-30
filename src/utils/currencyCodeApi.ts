@@ -2,7 +2,7 @@ import { api } from './api';
 
 const BASE_URL = 'https://openexchangerates.org/api'
 
-type Currency = {
+export type Currency = {
   [name: string]: string
 }
 

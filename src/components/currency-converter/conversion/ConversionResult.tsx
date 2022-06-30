@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import Icon from '../../../icons/Icon';
 import ConversionItem from './ConversionItem';
 import { RootState } from '../../../store';
+import { formatConversionData } from '../../../utils/formatHistory';
 
 const ResultContainer = styled.div`
   width: 100%;
@@ -29,13 +30,15 @@ type PropResult = {
 
 const ConversionResult = ({ onSwap }: PropResult) => {
   const conversionData = useSelector((state: RootState) => state.conversion.value);
+  const currencies = useSelector((state: RootState) => state.currency.value);
+  const { from, to, amount, convertedAmount } = formatConversionData({ value: conversionData, id: Math.random().toString() }, currencies);
 
   return conversionData.rate > 0 ? (
     <ResultContainer>
 
       <ConversionItem 
-        fromLabel={`${conversionData.amount} ${conversionData.from} equals`} 
-        toLabel={`${conversionData.convertedAmount} ${conversionData.to}`} />
+        fromLabel={`${amount} ${from} equals`} 
+        toLabel={`${convertedAmount} ${to}`} />
 
       <div onClick={onSwap}><Icon.SwapVertical /></div>
       

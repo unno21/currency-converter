@@ -50,9 +50,12 @@ const ConversionInput = ({ shouldSwap }: PropInputs) => {
   const conversionData = useSelector((state: RootState) => state.conversion.value);
 
   useEffect(() => {
-    const swappedCurrency = swapCurrencyInput(searchValue);
-    setSearchValue(swappedCurrency);
-    dispatch(swap());
+    if (searchValue !== '') {
+      const swappedCurrency = swapCurrencyInput(searchValue);
+      setSearchValue(swappedCurrency);
+      dispatch(swap());
+    }
+    
   }, [shouldSwap]);
 
   useEffect(() => {

@@ -1,3 +1,5 @@
+import { Currency } from './currencyCodeApi';
+
 type ParseInput = (input: string) => {
   amount: number;
   from: string;
