@@ -1,10 +1,12 @@
+import { useDispatch } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import conversionSlice from './slices/conversion';
-import { useDispatch } from 'react-redux';
+import historySlice from './slices/history';
 
 export const store = configureStore({
   reducer: {
     conversion: conversionSlice,
+    history: historySlice,
   },
 });
 

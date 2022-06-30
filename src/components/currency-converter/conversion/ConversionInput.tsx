@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+import { useSelector } from 'react-redux';
 import { useForm, SubmitHandler } from "react-hook-form";
 import styled from 'styled-components';
 
@@ -8,7 +9,8 @@ import ConversionError from './ConversionError';
 import { parseInput } from '../../../utils/parseInput';
 import { swapCurrencyInput } from "../../../utils/swap-currency-input";
 import { convertCurrency, swap } from '../../../store/slices/conversion';
-import { useAppDispatch } from "../../../store";
+import { useAppDispatch, RootState } from "../../../store";
+import { addHistory } from '../../../store/slices/history';
 
 const InputContainer = styled.div`
   width: 100%;
@@ -45,12 +47,19 @@ type PropInputs = {
 
 const ConversionInput = ({ shouldSwap }: PropInputs) => {
   const [searchValue, setSearchValue] = useState('');
+  const conversionData = useSelector((state: RootState) => state.conversion.value);
 
   useEffect(() => {
     const swappedCurrency = swapCurrencyInput(searchValue);
     setSearchValue(swappedCurrency);
     dispatch(swap());
   }, [shouldSwap]);
+
+  useEffect(() => {
+    if (conversionData.rate > 0) {
+      dispatch(addHistory({ value: conversionData }));
+    }
+  }, [conversionData]);
 
   const handleChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(event.target.value);
@@ -65,7 +74,7 @@ const ConversionInput = ({ shouldSwap }: PropInputs) => {
   const inputFieldForm = {...register("data", validations)}
   const onSubmit: SubmitHandler<Inputs> = async formData => {
     const parsedInput = parseInput(formData.data);
-    dispatch(convertCurrency(parsedInput));
+    await dispatch(convertCurrency(parsedInput));
   };
 
   return (

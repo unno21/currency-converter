@@ -2,7 +2,7 @@ import {  createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 import { convertRate, Params, ExchangeRateResponse } from '../../utils/exchange-currency-api';
 
-type ConversionType = {
+export type ConversionType = {
   value: {
     amount: number,
     convertedAmount: number,

@@ -10,7 +10,7 @@ const HistoryItemContainer = styled.div`
   border-radius: 0.25rem;
   padding: 1rem;
 
-  > img {
+  > div {
     height: 1.5rem;
     position: absolute;
     right: 0.75rem;
@@ -20,13 +20,21 @@ const HistoryItemContainer = styled.div`
   }
 `;
 
-const HistoryItem = () => {
+type HistoryPropType = {
+  fromLabel: string; 
+  toLabel: string;
+  onRemove: (id: string) => void;
+  id: string;
+}
+
+const HistoryItem = ({ fromLabel, toLabel, onRemove, id }: HistoryPropType) => {
   return (
     <HistoryItemContainer>
 
-      <ConversionItem fromLabel='1.00 Autralian Dollar equals' toLabel='0.64 Euro'/>
+      <ConversionItem fromLabel={fromLabel} toLabel={toLabel} />
       
-      <Icon.Close />
+      <div onClick={() => onRemove(id)}><Icon.Close /></div>
+
     </HistoryItemContainer>
   );
 }
