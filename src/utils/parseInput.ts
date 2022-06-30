@@ -9,13 +9,13 @@ export const parseInput: ParseInput = (input) => {
   const [ validatedInput , amount, decimal, from, to ] = extractedData;
   return {
     amount: Number(amount),
-    from,
-    to,
+    from: from.toUpperCase(),
+    to: to.toUpperCase(),
   };
 };
 
 export const extractData = (input: string) => {
-  const extractedData = /^(\d+(\.\d*)?) ([a-zA-Z]{3}) to ([a-zA-Z]{3})$/g.exec(input);
+  const extractedData = /^(\d+(\.\d*)?) ([a-zA-Z]{3}) [tT][oO] ([a-zA-Z]{3})$/g.exec(input);
   if (extractedData !== null) {
     return extractedData;
   }
