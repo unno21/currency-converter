@@ -1,7 +1,7 @@
 import { api } from './api';
 
 const BASE_URL = 'https://api.apilayer.com/exchangerates_data';
-const API_KEY = 'GxCypwSaO8FQMiPr2qI87Y5013lbekiZ';
+const API_KEY = 'REPLACE_WITH_YOUR_API_KEY';
 
 export type Params = {
   from: string,
