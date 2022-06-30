@@ -11,3 +11,16 @@
   max-width: 350px;
   margin-top: 10vh;
 }
+
+/**
+  Reset style
+**/
+body, html {
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
