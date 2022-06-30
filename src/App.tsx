@@ -1,27 +1,26 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 
 import './App.css';
 
+
 import Header from './components/Header';
-import { fetchRates } from './utils/api';
+import Conversion from './components/currency-converter/Conversion';
+import ConversionHistory from './components/history/ConversionHistory';
+
+import { store } from './store';
 
 const App = () => {
-  const handleSubmit = async () => {
-    try {
-      const rates = await fetchRates('EUR');
-      console.log(rates);
-    } catch (e: any) {
-      console.error(e.message);
-    }
-  };
-
   return (
-    <div className="app">
-      <div className="app__content">
-        <Header />
-        <button onClick={handleSubmit}>get rates</button>
+    <Provider store={store}>
+      <div className="app">
+        <div className="app__content">
+          <Header />
+          <Conversion />
+          <ConversionHistory />
+        </div>
       </div>
-    </div>
+    </Provider>
   );
 };
 

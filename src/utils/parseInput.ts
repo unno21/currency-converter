@@ -1,16 +1,24 @@
 type ParseInput = (input: string) => {
-  fromAmount: number;
-  fromCurrency: string;
-  toCurrency: string
+  amount: number;
+  from: string;
+  to: string
 }
 
 export const parseInput: ParseInput = (input) => {
-  // expected input: 1 EUR to USD
-  // TODO: parse or tokenize the input string
-
+  const extractedData = extractData(input);
+  const [ validatedInput , amount, decimal, from, to ] = extractedData;
   return {
-    fromAmount: 0,
-    fromCurrency: '',
-    toCurrency: '',
+    amount: Number(amount),
+    from: from.toUpperCase(),
+    to: to.toUpperCase(),
   };
 };
+
+export const extractData = (input: string) => {
+  const extractedData = /^(\d+(\.\d*)?) ([a-zA-Z]{3}) [tT][oO] ([a-zA-Z]{3})$/g.exec(input);
+  if (extractedData !== null) {
+    return extractedData;
+  }
+
+  throw new Error(`Invalid input structure`);
+}
