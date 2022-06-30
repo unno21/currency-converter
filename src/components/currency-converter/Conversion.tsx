@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import styled from 'styled-components';
 
 import ConversionInput from './conversion/ConversionInput';
@@ -9,15 +11,16 @@ const ConversionContainer = styled.div`
 
 const Conversion = () => {
 
-  const onConvert = (data: string) => {
-    // @TODO fetch API
-    console.log(data);
+  const [shouldSwap, setShouldSwap] = useState(false);
+
+  const handleSwap = () => {
+    setShouldSwap(!shouldSwap);
   }
 
   return (
     <ConversionContainer>
-      <ConversionInput onConvert={onConvert} />
-      <ConversionResult />
+      <ConversionInput shouldSwap={shouldSwap} />
+      <ConversionResult onSwap={handleSwap}/>
     </ConversionContainer>
   )
 }

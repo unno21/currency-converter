@@ -1,7 +1,9 @@
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
 
 import Icon from '../../../icons/Icon';
 import ConversionItem from './ConversionItem';
+import { RootState } from '../../../store';
 
 const ResultContainer = styled.div`
   width: 100%;
@@ -11,7 +13,7 @@ const ResultContainer = styled.div`
   border-radius: 0.25rem;
   padding: 1rem;
 
-  > img {
+  > div {
     height: 1.5rem;
     position: absolute;
     right: 0.75rem;
@@ -21,16 +23,24 @@ const ResultContainer = styled.div`
   }
 `;
 
-const ConversionResult = () => {
-  return (
+type PropResult = {
+  onSwap: () => void;
+}
+
+const ConversionResult = ({ onSwap }: PropResult) => {
+  const conversionData = useSelector((state: RootState) => state.conversion.value);
+
+  return conversionData.rate > 0 ? (
     <ResultContainer>
 
-      <ConversionItem fromLabel='1.00 Autralian Dollar equals' toLabel='0.64 Euro'/>
+      <ConversionItem 
+        fromLabel={`${conversionData.amount} ${conversionData.from} equals`} 
+        toLabel={`${conversionData.convertedAmount} ${conversionData.to}`} />
 
-      <Icon.SwapVertical />
-
+      <div onClick={onSwap}><Icon.SwapVertical /></div>
+      
     </ResultContainer>
-  );
+  ) : <></>;
 }
 
 export default ConversionResult;

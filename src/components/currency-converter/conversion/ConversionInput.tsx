@@ -1,8 +1,14 @@
+import { useEffect, useState } from "react";
+
 import { useForm, SubmitHandler } from "react-hook-form";
 import styled from 'styled-components';
 
 import Icon from '../../../icons/Icon';
 import ConversionError from './ConversionError';
+import { parseInput } from '../../../utils/parseInput';
+import { swapCurrencyInput } from "../../../utils/swap-currency-input";
+import { convertCurrency, swap } from '../../../store/slices/conversion';
+import { useAppDispatch } from "../../../store";
 
 const InputContainer = styled.div`
   width: 100%;
@@ -33,25 +39,43 @@ type Inputs = {
   data: string,
 };
 
-type InputProps = {
-  onConvert: (data: string) => void,
-  onInput?: () => void,
+type PropInputs = {
+  shouldSwap: boolean;
 }
 
-const ConversionInput = ({ onConvert }: InputProps) => {
-  const { register, handleSubmit, formState: { errors } } = useForm<Inputs>();
-  const dataValidation = {
-    required: true,
-    pattern: /^\d+(\.\d*)? [a-zA-Z]{3} to [a-zA-Z]{3}/,
+const ConversionInput = ({ shouldSwap }: PropInputs) => {
+  const [searchValue, setSearchValue] = useState('');
+
+  useEffect(() => {
+    const swappedCurrency = swapCurrencyInput(searchValue);
+    setSearchValue(swappedCurrency);
+    dispatch(swap());
+  }, [shouldSwap]);
+
+  const handleChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(event.target.value);
   }
-  const onSubmit: SubmitHandler<Inputs> = formData => {
-    onConvert(formData.data);
+
+  const { register, handleSubmit, formState: { errors } } = useForm<Inputs>();
+  const dispatch = useAppDispatch();
+  const validations = {
+    required: true,
+    pattern: /^\d+(\.\d*)? [a-zA-Z]{3} to [a-zA-Z]{3}$/,
+  }
+  const inputFieldForm = {...register("data", validations)}
+  const onSubmit: SubmitHandler<Inputs> = async formData => {
+    const parsedInput = parseInput(formData.data);
+    dispatch(convertCurrency(parsedInput));
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <InputContainer>
-        <input {...register("data", dataValidation)} />
+        <input value={searchValue} {...inputFieldForm} onChange={(e) => {
+            inputFieldForm.onChange(e);
+            handleChangeInput(e);
+          }
+        }/>
         <Icon.Magnify /> 
       </InputContainer>
       {errors.data && errors.data.type === 'required' && <ConversionError message='Please input data' />}

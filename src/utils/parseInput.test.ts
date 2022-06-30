@@ -22,13 +22,13 @@ describe('parseInput', () => {
   });
 
   it('should parse good input', () => {
-    const expectedOutput = { fromAmount: 1, fromCurrency: 'EUR', toCurrency: 'USD' };
+    const expectedOutput = { amount: 1, from: 'EUR', to: 'USD' };
     expect(parseInput('1 EUR to USD')).toEqual(expectedOutput);
     expect(parseInput('1 eur to usd')).toEqual(expectedOutput);
     expect(parseInput('1 EUR to usd')).toEqual(expectedOutput);
     expect(parseInput('1 eUr tO Usd')).toEqual(expectedOutput);
     expect(parseInput('1. eUr tO Usd')).toEqual(expectedOutput);
     expect(parseInput('1.0 eUr tO Usd')).toEqual(expectedOutput);
-    expect(parseInput('1.0003 eUr tO Usd')).toEqual({ fromAmount: 1.0003, fromCurrency: 'EUR', toCurrency: 'USD' });
+    expect(parseInput('1.0003 eUr tO Usd')).toEqual({ amount: 1.0003, from: 'EUR', to: 'USD' });
   });
 });
