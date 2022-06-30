@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { useSelector } from 'react-redux';
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm, SubmitHandler, Validate, ValidateResult } from "react-hook-form";
 import styled from 'styled-components';
 
 import Icon from '../../../icons/Icon';
@@ -48,6 +48,8 @@ type PropInputs = {
 const ConversionInput = ({ shouldSwap }: PropInputs) => {
   const [searchValue, setSearchValue] = useState('');
   const conversionData = useSelector((state: RootState) => state.conversion.value);
+  const currencies = useSelector((state: RootState) => state.currency.value);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (searchValue !== '') {
@@ -68,11 +70,21 @@ const ConversionInput = ({ shouldSwap }: PropInputs) => {
     setSearchValue(event.target.value);
   }
 
+  const validateCurrencyCode: Validate<string> = (value: string): ValidateResult => { 
+    const { from, to } = parseInput(value);
+    if (currencies[from] === undefined) {
+      return `Base ${from} is not supported.`;
+    }
+    if (currencies[to] === undefined) {
+      return `Base ${to} is not supported.`;
+    }
+  }
+  
   const { register, handleSubmit, formState: { errors } } = useForm<Inputs>();
-  const dispatch = useAppDispatch();
   const validations = {
     required: true,
     pattern: /^\d+(\.\d*)? [a-zA-Z]{3} to [a-zA-Z]{3}$/,
+    validate: validateCurrencyCode
   }
   const inputFieldForm = {...register("data", validations)}
   const onSubmit: SubmitHandler<Inputs> = async formData => {
@@ -92,6 +104,7 @@ const ConversionInput = ({ shouldSwap }: PropInputs) => {
       </InputContainer>
       {errors.data && errors.data.type === 'required' && <ConversionError message='Please input data' />}
       {errors.data && errors.data.type === 'pattern' && <ConversionError message='Invalid input structure' />}
+      {errors.data && errors.data.type === 'validate' && <ConversionError message={errors.data.message || ''} />}
     </form>
   );
 }
